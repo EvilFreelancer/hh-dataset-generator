@@ -15,6 +15,7 @@ now = datetime.now()
 excludes = json.loads(open('./excludes.json', "r").read())
 aliases = json.loads(open('./aliases.json', "r").read())
 
+
 # https://stackoverflow.com/questions/753052/strip-html-from-strings-in-python
 def strip_tags(value):
     """Returns the given HTML with all tags stripped."""
@@ -95,6 +96,24 @@ for fl in vacancies:
     # If key_skills list is empty, then skip this step
     if not skills:
         continue
+
+    # Always JS
+    if 'vue.js' in skills and 'javascript' not in skills:
+        skills.append('javascript')
+    if 'react.js' in skills and 'javascript' not in skills:
+        skills.append('javascript')
+    if 'angular.js' in skills and 'javascript' not in skills:
+        skills.append('javascript')
+    if 'node.js' in skills and 'javascript' not in skills:
+        skills.append('javascript')
+    if 'nuxt.js' in skills and 'javascript' not in skills:
+        skills.append('javascript')
+    if 'nest.js' in skills and 'node.js' not in skills:
+        skills.append('javascript')
+    if 'nest.js' in skills and 'javascript' not in skills:
+        skills.append('javascript')
+    if 'next.js' in skills and 'node.js' not in skills:
+        skills.append('javascript')
 
     # Build string of skills
     skills = sorted(skills)
